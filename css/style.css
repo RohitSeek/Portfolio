@@ -94,9 +94,9 @@ body {
 }
 
 .header.scrolled {
-    background: rgba(6, 8, 12, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(6, 8, 12, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
 }
 
@@ -192,14 +192,17 @@ body {
     position: absolute;
     inset: 0;
     pointer-events: none;
+    transform: translateZ(0);
+    isolation: isolate;
 }
 
 .hero-gradient {
     position: absolute;
     border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.4;
-    animation: gradientFloat 20s ease-in-out infinite;
+    filter: blur(60px);
+    opacity: 0.35;
+    animation: gradientFloat 25s ease-in-out infinite;
+    will-change: transform;
 }
 
 .hero-gradient-1 {
@@ -410,8 +413,8 @@ body {
     position: absolute;
     inset: -20%;
     background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-    filter: blur(40px);
-    opacity: 0.6;
+    filter: blur(24px);
+    opacity: 0.5;
 }
 
 .hero-image-wrap img {

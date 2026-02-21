@@ -1,25 +1,37 @@
-/* ——— Scroll progress bar ——— */
-const scrollProgress = document.getElementById('scroll-progress');
-if (scrollProgress) {
-    function updateScrollProgress() {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        scrollProgress.style.width = percent + '%';
-    }
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
-    updateScrollProgress();
+/* ——— Throttled scroll (one update per frame to avoid lag) ——— */
+var scrollTicking = false;
+function onScroll() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(function () {
+        var scrollY = window.scrollY;
+        /* Scroll progress bar */
+        var scrollProgress = document.getElementById('scroll-progress');
+        if (scrollProgress) {
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress.style.width = (docHeight > 0 ? (scrollY / docHeight) * 100 : 0) + '%';
+        }
+        /* Header scrolled state */
+        var header = document.getElementById('header');
+        if (header) header.classList.toggle('scrolled', scrollY > 80);
+        /* Active nav link */
+        var sections = document.querySelectorAll('section[id]');
+        var navLinks = document.querySelectorAll('.navbar a[href^="#"]');
+        sections.forEach(function (sec) {
+            var top = sec.offsetTop - 120;
+            var height = sec.offsetHeight;
+            var id = sec.getAttribute('id');
+            if (id && scrollY >= top && scrollY < top + height) {
+                navLinks.forEach(function (link) {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                });
+            }
+        });
+        scrollTicking = false;
+    });
 }
-
-/* ——— Header scroll state ——— */
-const header = document.getElementById('header');
-if (header) {
-    function toggleHeader() {
-        header.classList.toggle('scrolled', window.scrollY > 80);
-    }
-    window.addEventListener('scroll', toggleHeader, { passive: true });
-    toggleHeader();
-}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
 /* ——— Mobile menu ——— */
 const menuIcon = document.getElementById('menu-icon');
@@ -52,28 +64,6 @@ if (menuIcon && navbar) {
     });
 }
 
-/* ——— Active nav link on scroll ——— */
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.navbar a[href^="#"]');
-function setActiveLink() {
-    const scrollY = window.scrollY;
-    sections.forEach(function (sec) {
-        const top = sec.offsetTop - 120;
-        const height = sec.offsetHeight;
-        const id = sec.getAttribute('id');
-        if (id && scrollY >= top && scrollY < top + height) {
-            navLinks.forEach(function (link) {
-                if (link.getAttribute('href') === '#' + id) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        }
-    });
-}
-window.addEventListener('scroll', setActiveLink, { passive: true });
-setActiveLink();
 
 /* ——— Read more (About) ——— */
 const readMoreBtn = document.getElementById('read-more-btn');
