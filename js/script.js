@@ -1,110 +1,135 @@
-/*---------About me Read more-------------*/
-document.getElementById('read-more-btn').addEventListener('click', function() {
-    var extraContent = document.getElementById('extra-content');
-    if (extraContent.style.display === "block") {
-        extraContent.style.display = "none";
-        this.innerHTML = "Read More";
-    } else {
-        extraContent.style.display = "block";
-        this.innerHTML = "Show Less";
+/* ——— Scroll progress bar ——— */
+const scrollProgress = document.getElementById('scroll-progress');
+if (scrollProgress) {
+    function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        scrollProgress.style.width = percent + '%';
     }
-});
-
-
-/*---------toogle icon navbar-------------*/
-let menuIcon = document.querySelector('#menu-icon')
-let navbar = document.querySelector('.navbar')
-
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
 }
 
-/*---------Scroll Sections active link-------------*/
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a')
+/* ——— Header scroll state ——— */
+const header = document.getElementById('header');
+if (header) {
+    function toggleHeader() {
+        header.classList.toggle('scrolled', window.scrollY > 80);
+    }
+    window.addEventListener('scroll', toggleHeader, { passive: true });
+    toggleHeader();
+}
 
-window.onscroll = () => {
-    sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
-
-        if (top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
-            });
-        };
+/* ——— Mobile menu ——— */
+const menuIcon = document.getElementById('menu-icon');
+const navbar = document.getElementById('navbar');
+if (menuIcon && navbar) {
+    var iconMenu = menuIcon.querySelector('.bx-menu');
+    var iconClose = menuIcon.querySelector('.bx-x');
+    function openMenu() {
+        navbar.classList.add('open');
+        menuIcon.classList.add('open');
+        menuIcon.setAttribute('aria-expanded', 'true');
+        if (iconMenu) iconMenu.style.display = 'none';
+        if (iconClose) iconClose.style.display = 'block';
+    }
+    function closeMenu() {
+        navbar.classList.remove('open');
+        menuIcon.classList.remove('open');
+        menuIcon.setAttribute('aria-expanded', 'false');
+        if (iconMenu) iconMenu.style.display = 'block';
+        if (iconClose) iconClose.style.display = 'none';
+    }
+    menuIcon.addEventListener('click', function () {
+        if (navbar.classList.contains('open')) closeMenu();
+        else openMenu();
     });
+    navbar.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
+        });
+    });
+}
 
-    /*---------------sticky navbar------------*/
-    let header = document.querySelector('header');
-    header.classList.toggle('sticky', window.scrollY > 100);
+/* ——— Active nav link on scroll ——— */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.navbar a[href^="#"]');
+function setActiveLink() {
+    const scrollY = window.scrollY;
+    sections.forEach(function (sec) {
+        const top = sec.offsetTop - 120;
+        const height = sec.offsetHeight;
+        const id = sec.getAttribute('id');
+        if (id && scrollY >= top && scrollY < top + height) {
+            navLinks.forEach(function (link) {
+                if (link.getAttribute('href') === '#' + id) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+    });
+}
+window.addEventListener('scroll', setActiveLink, { passive: true });
+setActiveLink();
 
-    /*-------------remove toggle icon and navbar when click navbar link(scroll)-----------------*/
-    menuIcon.classList.remove('bx-x');
-    navbar.classList.remove('active');
-};
+/* ——— Read more (About) ——— */
+const readMoreBtn = document.getElementById('read-more-btn');
+const extraContent = document.getElementById('extra-content');
+if (readMoreBtn && extraContent) {
+    readMoreBtn.addEventListener('click', function () {
+        const isOpen = extraContent.style.display === 'block';
+        extraContent.style.display = isOpen ? 'none' : 'block';
+        readMoreBtn.textContent = isOpen ? 'Read more' : 'Show less';
+    });
+}
 
-/*--------------sroll reveal--------------------*/
-ScrollReveal({
-    // reset: true,
-    distance: '80px',
-    duration: 2000,
-    Delay: 200
-});
+/* ——— Scroll Reveal ——— */
+if (typeof ScrollReveal === 'function') {
+    ScrollReveal({ distance: '48px', duration: 800, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' });
+    ScrollReveal().reveal('.section-head, .hero-content', { origin: 'top', interval: 80 });
+    ScrollReveal().reveal('.hero-visual, .service-card, .portfolio-card, .contact-form', { origin: 'bottom', interval: 100 });
+    ScrollReveal().reveal('.about-image', { origin: 'left' });
+    ScrollReveal().reveal('.about-body', { origin: 'right' });
+}
 
-ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
-ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form', { origin: 'bottom' });
-ScrollReveal().reveal('.home-content h2, .about-img', { origin: 'left' });
-ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
+/* ——— Typed.js ——— */
+if (typeof Typed === 'function') {
+    new Typed('.multiple-text', {
+        strings: ['Web Developer', 'Software Developer', 'Student'],
+        typeSpeed: 90,
+        backSpeed: 60,
+        backDelay: 1200,
+        loop: true
+    });
+}
 
-/*-------------typed js----------------*/
-const typed = new Typed('.multiple-text', {
-    strings: [' Web Developer', ' Software Developer', ' Student'],
-    typeSpeed: 100,
-    backSpeed: 100,
-    backDelay: 1000,
-    loop: true
-});
+/* ——— Footer year ——— */
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-
-
-
+/* ——— EmailJS contact form ——— */
 (function () {
-    emailjs.init("LV0a3AN55QpCwLPTL");  
+    if (typeof emailjs === 'undefined') return;
+    emailjs.init('LV0a3AN55QpCwLPTL');
 })();
 
-// Handle form submission
-document.getElementById('contact-form').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent the default form submission
-
-    // Get form values
-    const fullName = document.getElementById('fullName').value;
-    const email = document.getElementById('email').value;
-    const contactNo = document.getElementById('contactNo').value;
-    const emailSubject = document.getElementById('emailSubject').value;
-    const message = document.getElementById('message').value;
-
-    // Prepare email parameters
-    const params = {
-        to_name: "Rohit",
-        from_name: fullName,
-        reply_to: email,
-       
-      
-        message: message,
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = this;
+    var params = {
+        to_name: 'Rohit',
+        from_name: document.getElementById('fullName').value,
+        reply_to: document.getElementById('email').value,
+        message: document.getElementById('message').value
     };
-//   subject: emailSubject,
-//  contactNo: contactNo,
-    // Send email using EmailJS
-    emailjs.send("service_5g1liyk", "template_mn9vk59", params)  // Replace with your actual Service ID and Template ID
-        .then(function (response) {
-            alert("Message sent successfully!");
-            document.getElementById('contact-form').reset();  // Clear the form after submission
-        }, function (error) {
-            alert("Failed to send the message. Please try again.");
+    emailjs.send('service_5g1liyk', 'template_mn9vk59', params)
+        .then(function () {
+            alert('Message sent successfully!');
+            form.reset();
+        }, function () {
+            alert('Failed to send. Please try again.');
         });
 });

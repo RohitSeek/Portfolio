@@ -2,260 +2,239 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
-
+    <title>Rohit Kumar — Full Stack Developer</title>
     <link rel="icon" href="./images/avtar.png" type="image/x-icon">
 
-    <!-- Box icons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- custom css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- header design -->
-    <header class="header">
-        <a href="#portfolio" class="logo">Portfolio</a>
-        
-        <i class='bx bx-menu' id="menu-icon"></i>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-            <nav class="navbar">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#contact">Contact</a>
-            </nav>
+    <header class="header" id="header">
+        <a href="#home" class="logo">
+            <span class="logo-bracket">&lt;</span>RK<span class="logo-bracket">&gt;</span>
+        </a>
+        <button class="nav-toggle" id="menu-icon" aria-label="Toggle menu">
+            <i class="bx bx-menu" aria-hidden="true"></i>
+            <i class="bx bx-x" aria-hidden="true" style="display: none;"></i>
+        </button>
+        <nav class="navbar" id="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Work</a>
+            <a href="#contact">Contact</a>
+            <a href="https://drive.google.com/file/d/11m79qNVn0CfDIvRT58nuRezyQrk2RJRy/view" class="nav-cta" target="_blank" rel="noopener">Resume</a>
+        </nav>
     </header>
 
-    <!-- home section design -->
-    <section class="home" id="home">
-       <div class="home-content">
-        <h3>Hello, It's Me</h3>
-        <h2>Rohit Kumar</h2>
-        <h3>And I am a <span class="multiple-text"></span></h3>
-        <p>Currently I am pursuing a Master of Computer Applications (MCA) from National Institute of Technology, Karnataka. </p>
-
-        <div class="social-media">
-            <a href="https://github.com/RohitSeek" target="_blank"><i class='bx bxl-github'></i></a>
-            <a href="mailto:rohitatexam@gmail.com"
-            target="_blank"><i class='bx bxl-gmail'></i></a>
-            <a href="https://www.linkedin.com/in/rohitseek/" target="_blank"><i class='bx bxl-linkedin' ></i></a>
-        </div>
-        <a href="https://drive.google.com/file/d/11m79qNVn0CfDIvRT58nuRezyQrk2RJRy/view" class="btn" target="_blank">Download CV</a>
-       </div> 
-
-       <div class="home-img">
-        <img src="images/home.jpg" alt="profile_photo">
-       </div>
-    </section>
-
-    <!-- about section -->
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="images/home.jpg" alt="about_image">
-        </div>
-
-        <div class="about-section">
-            <h2 class="heading">About <span>Me</span></h2>
-            <h3 id="heading-role">Full Stack Web Developer!</h3>
-            <p>
-                Hello! I'm Rohit Kumar, a passionate Full-Stack Developer currently pursuing my Master of Computer Applications (MCA) at the National Institute of Technology (NIT) Karnataka. With a strong foundation in software development and a proven ability to create user-centric applications, I am proficient in building robust web solutions using the MERN stack (MongoDB, Express, React, Node.js).
-            </p>
-            <a href="javascript:void(0);" class="btn" id="read-more-btn">Read More</a>
-
-            <!-- extra section -->
-
-            <div class="extra-content" id="extra-content">
-                <p>In addition to my technical coursework, I have a deep interest in problem-solving and actively engage with platforms like LeetCode and HackerRank to sharpen my skills.</p>
-        
-                <h4>Technical Toolkit</h4>
-        <div class="tech-stack">
-            <div class="tech-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML5" class="tech-icon">
-                <span>HTML5</span>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-bg">
+                <div class="hero-gradient hero-gradient-1"></div>
+                <div class="hero-gradient hero-gradient-2"></div>
+                <div class="hero-gradient hero-gradient-3"></div>
+                <div class="hero-grid"></div>
             </div>
-            <div class="tech-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS3" class="tech-icon">
-                <span>CSS3</span>
-            </div>
-            <div class="tech-item">
-                <img src="./images/java-script.png" alt="js" class="tech-icon">
-                <span>JavaScript (ES6)</span>
-            </div>
-            <div class="tech-item">
-                <img src="./images/react.png" alt="JavaScript" class="tech-icon">
-
-                <span class="tech-name">React.js</span>
-            </div>
-
-            <div class="tech-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/919/919825.png" alt="Node.js" class="tech-icon">
-                <span>Node.js</span>
-            </div>
-            <div class="tech-item">
-                <img src="./images/mongodb.png" alt="MongoDB" class="tech-icon">
-                <span>MongoDB</span>
-            </div>
-            <div class="tech-item">
-                <img src="./images/mysql.png" alt="MySQL" class="tech-icon">
-                <span>MySQL</span>
-            </div>
-            <div class="tech-item">
-                <img src="./images/c++.png" alt="Git" class="tech-icon">
-                <span>C++</span>
-            </div>
-            <div class="tech-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="tech-icon">
-                <span>GitHub</span>
-            </div>
-            <div class="tech-item">
-                <img src="./images/visual-studio.png" alt="VS Code" class="tech-icon">
-                <span>VS Code</span>
-            </div>
-        </div>
-                <p>I'm always open to new challenges, collaborations, and continuous learning. Feel free to explore my work and connect with me to collaborate on exciting tech projects!</p>
-            </div>
-        
-        </div>
-    </section>
-
-    <!-- services section design -->
-    <section class="services" id="services">
-        <h2 class="heading">Our <span>Services</span></h2>
-        <div class="services-container">
-            <div class="services-box">
-                <i class='bx bx-code-alt'></i>
-                <h3>Web Development</h3>
-                <p></p>
-                <a href="#about" class="btn">Read More</a>
-            </div>
-
-            <div class="services-box">
-                <i class='bx bxl-android'></i>
-                <h3>Mobile App Development</h3>
-                <p></p>
-                <a href="#about" class="btn">Read More</a>
-            </div>
-
-            <!-- <div class="services-box">
-                <i class='bx bx-bar-chart-alt'></i>
-                <h3>Digital Marketing</h3>
-                <p>Hey this is me amit Bishnoi</p>
-                <a href="#about" class="btn">Read More</a>
-            </div> -->
-        </div>
-    </section>
-
-    <!-- portfolio section design -->
-    <section class="portfolio" id="portfolio">
-        <h2 class="heading">Latest <span>Project / Certificates</span></h2>
-
-        <div class="portfolio-container">
-            <div class="portfolio-box">
-                <img src="images/port1.jpg" alt="Protfolio 1">
-                <div class="portfolio-layer">
-                    <h4>Campus TradeHub</h4>
-                    <p> Developed a campus web app for listing and selling used products with image uploads via Multer and Cloudinary.</p>
-                    <a href="https://github.com/RohitSeek/Campus-TradeHub"><i class='bx bx-link-external'></i></a>
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <p class="hero-eyebrow">Hello, I'm</p>
+                    <h1 class="hero-title">
+                        <span class="hero-name">Rohit Kumar</span>
+                    </h1>
+                    <p class="hero-role">And I am a <span class="multiple-text"></span></p>
+                    <p class="hero-desc">MCA student at NIT Karnataka. I build full‑stack web applications with the MERN stack and love turning ideas into clean, scalable products.</p>
+                    <div class="hero-actions">
+                        <a href="https://drive.google.com/file/d/11m79qNVn0CfDIvRT58nuRezyQrk2RJRy/view" class="btn btn-primary" target="_blank" rel="noopener">Download CV</a>
+                        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/RohitSeek" target="_blank" rel="noopener" aria-label="GitHub"><i class="bx bxl-github"></i></a>
+                        <a href="mailto:rohitatexam@gmail.com" target="_blank" rel="noopener" aria-label="Email"><i class="bx bxl-gmail"></i></a>
+                        <a href="https://www.linkedin.com/in/rohitseek/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-wrap">
+                        <div class="hero-image-glow"></div>
+                        <img src="images/home.jpg" alt="Rohit Kumar" width="420" height="420">
+                    </div>
                 </div>
             </div>
-
-            <div class="portfolio-box">
-                <img src="images/port2.jpg" alt="Protfolio 2">
-                <div class="portfolio-layer">
-                    <h4>PassKeeper</h4>
-                    <p>Developed PassKeeper, a full stack web-based password manager that secures user credentials with end-to-end
-                        encryption, offering a custom password generator for creating strong, unique passwords.</p>
-                    <a href="https://github.com/RohitSeek/PassKeeper"><i class='bx bx-link-external'></i></a>
-                </div>
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <i class="bx bx-down-arrow-alt"></i>
             </div>
+        </section>
 
-            <div class="portfolio-box">
-                <img src="images/port3.jpg" alt="Protfolio 3">
-                <div class="portfolio-layer">
-                    <h4>Spotify UI</h4>
-                    <p>Built a Spotify clone website using HTML and CSS, providing a user-friendly interface and responsive design for seamless navigation and an immersive music experience.</p>
-                    <a href="https://github.com/RohitSeek/Spotify-UI-Clone"><i class='bx bx-link-external'></i></a>
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-label">About</span>
+                    <h2 class="section-title">About <span>Me</span></h2>
                 </div>
-            </div>
-
-            <div class="portfolio-box">
-                <img src="images/port4.jpg" alt="Protfolio 4">
-                <div class="portfolio-layer">
-                    <h4>Software Engineer Certificate</h4>
-                    <p></p>
-                    <a href="https://www.hackerrank.com/certificates/iframe/2dbaf251e6e8"><i class='bx bx-link-external'></i></a>
-                </div>
-            </div>
-
-            <div class="portfolio-box">
-                <img src="images/port5.jpg" alt="Protfolio 5">
-                <div class="portfolio-layer">
-                    <h4>SQL (Intermediate) Certificate</h4>
-                    <p></p>
-                    <a href="https://www.hackerrank.com/certificates/iframe/61fbeb46e0b4"><i class='bx bx-link-external'></i></a>
-                </div>
-            </div>
-
-            <div class="portfolio-box">
-                <img src="images/port6.jpg" alt="Protfolio 6">
-                <div class="portfolio-layer">
-                    <h4>SQL (Basic) Certificate</h4>
-                    <p>
+                <div class="about-grid">
+                    <div class="about-image">
+                        <div class="about-image-frame">
+                            <img src="images/home.jpg" alt="Rohit Kumar" width="400" height="400" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="about-body">
+                        <p class="about-role">Full Stack Web Developer</p>
+                        <p class="about-text">
+                            I'm Rohit Kumar, a passionate Full-Stack Developer pursuing MCA at NIT Karnataka. I build user-centric web solutions with the MERN stack (MongoDB, Express, React, Node.js) and enjoy problem-solving on LeetCode and HackerRank.
                         </p>
-                    <a href="https://www.hackerrank.com/certificates/iframe/fc3281f1f24e"><i class='bx bx-link-external'></i></a>
+                        <button type="button" class="btn btn-outline" id="read-more-btn">Read more</button>
+                        <div class="extra-content" id="extra-content">
+                            <p>I'm always open to new challenges, collaborations, and continuous learning. Feel free to explore my work and connect for exciting tech projects!</p>
+                            <h4 class="tech-title">Technical toolkit</h4>
+                            <div class="tech-stack">
+                                <div class="tech-item"><img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML5" class="tech-icon"><span>HTML5</span></div>
+                                <div class="tech-item"><img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS3" class="tech-icon"><span>CSS3</span></div>
+                                <div class="tech-item"><img src="./images/java-script.png" alt="JavaScript" class="tech-icon"><span>JavaScript</span></div>
+                                <div class="tech-item"><img src="./images/react.png" alt="React" class="tech-icon"><span>React.js</span></div>
+                                <div class="tech-item"><img src="https://cdn-icons-png.flaticon.com/512/919/919825.png" alt="Node.js" class="tech-icon"><span>Node.js</span></div>
+                                <div class="tech-item"><img src="./images/mongodb.png" alt="MongoDB" class="tech-icon"><span>MongoDB</span></div>
+                                <div class="tech-item"><img src="./images/mysql.png" alt="MySQL" class="tech-icon"><span>MySQL</span></div>
+                                <div class="tech-item"><img src="./images/c++.png" alt="C++" class="tech-icon"><span>C++</span></div>
+                                <div class="tech-item"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="tech-icon"><span>GitHub</span></div>
+                                <div class="tech-item"><img src="./images/visual-studio.png" alt="VS Code" class="tech-icon"><span>VS Code</span></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- contact section -->
-    <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me!</span></h2>
-        <form id="contact-form">
-            <div class="input-box">
-                <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
-                <input type="email" id="email" name="email" placeholder="Email Address" required>
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-label">Services</span>
+                    <h2 class="section-title">What I <span>Offer</span></h2>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon"><i class="bx bx-code-alt"></i></div>
+                        <h3>Web Development</h3>
+                        <p>Full-stack web applications with React, Node.js, and modern tooling. Responsive, fast, and scalable.</p>
+                        <a href="#about" class="service-link">Learn more <i class="bx bx-right-arrow-alt"></i></a>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon"><i class="bx bxl-android"></i></div>
+                        <h3>Mobile App Development</h3>
+                        <p>Cross-platform and native-ready solutions for iOS and Android with clean UX.</p>
+                        <a href="#about" class="service-link">Learn more <i class="bx bx-right-arrow-alt"></i></a>
+                    </article>
+                </div>
             </div>
-            <div class="input-box">
-                <input type="number" id="contactNo" name="contactNo" placeholder="Contact No." required>
-                <input type="text" id="emailSubject" name="emailSubject" placeholder="Email Subject" required>
-            </div>
-            <textarea id="message" name="message" cols="30" rows="10" placeholder="Your message" required></textarea>
-            <input type="" value="Send Message" class="btn">
-        </form>
-    </section>
-    
-    
+        </section>
 
-    <!-- footer -->
+        <section class="portfolio" id="portfolio">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-label">Work</span>
+                    <h2 class="section-title">Projects & <span>Certificates</span></h2>
+                </div>
+                <div class="portfolio-grid">
+                    <a href="https://github.com/RohitSeek/Campus-TradeHub" class="portfolio-card" target="_blank" rel="noopener">
+                        <div class="portfolio-card-image"><img src="images/port1.jpg" alt="Campus TradeHub" width="640" height="400" loading="lazy"></div>
+                        <div class="portfolio-card-content">
+                            <h4>Campus TradeHub</h4>
+                            <p>Campus web app for listing and selling used products with image uploads via Multer and Cloudinary.</p>
+                            <div class="portfolio-tags"><span>React</span><span>Node.js</span><span>MongoDB</span><span>Cloudinary</span></div>
+                            <span class="portfolio-card-link"><i class="bx bx-link-external"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://github.com/RohitSeek/PassKeeper" class="portfolio-card" target="_blank" rel="noopener">
+                        <div class="portfolio-card-image"><img src="images/port2.jpg" alt="PassKeeper" width="640" height="400" loading="lazy"></div>
+                        <div class="portfolio-card-content">
+                            <h4>PassKeeper</h4>
+                            <p>Full-stack password manager with end-to-end encryption and a custom password generator.</p>
+                            <div class="portfolio-tags"><span>React</span><span>Node.js</span><span>Encryption</span><span>MongoDB</span></div>
+                            <span class="portfolio-card-link"><i class="bx bx-link-external"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://github.com/RohitSeek/Ai-Chat" class="portfolio-card" target="_blank" rel="noopener">
+                        <div class="portfolio-card-image"><img src="images/port3.jpg" alt="AI Chat" width="640" height="400" loading="lazy"></div>
+                        <div class="portfolio-card-content">
+                            <h4>AI Chat</h4>
+                            <p>AI chat app using Google Gemini API. Built with React and Vite.</p>
+                            <div class="portfolio-tags"><span>React</span><span>Vite</span><span>Gemini API</span></div>
+                            <span class="portfolio-card-link"><i class="bx bx-link-external"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://www.hackerrank.com/certificates/iframe/2dbaf251e6e8" class="portfolio-card" target="_blank" rel="noopener">
+                        <div class="portfolio-card-image"><img src="images/port4.jpg" alt="Software Engineer Certificate" width="640" height="400" loading="lazy"></div>
+                        <div class="portfolio-card-content">
+                            <h4>Software Engineer Certificate</h4>
+                            <p>HackerRank certification.</p>
+                            <div class="portfolio-tags"><span>HackerRank</span></div>
+                            <span class="portfolio-card-link"><i class="bx bx-link-external"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://www.hackerrank.com/certificates/iframe/61fbeb46e0b4" class="portfolio-card" target="_blank" rel="noopener">
+                        <div class="portfolio-card-image"><img src="images/port5.jpg" alt="SQL Intermediate" width="640" height="400" loading="lazy"></div>
+                        <div class="portfolio-card-content">
+                            <h4>SQL (Intermediate)</h4>
+                            <p>HackerRank certification.</p>
+                            <div class="portfolio-tags"><span>HackerRank</span><span>SQL</span></div>
+                            <span class="portfolio-card-link"><i class="bx bx-link-external"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://www.hackerrank.com/certificates/iframe/fc3281f1f24e" class="portfolio-card" target="_blank" rel="noopener">
+                        <div class="portfolio-card-image"><img src="images/port6.jpg" alt="SQL Basic" width="640" height="400" loading="lazy"></div>
+                        <div class="portfolio-card-content">
+                            <h4>SQL (Basic)</h4>
+                            <p>HackerRank certification.</p>
+                            <div class="portfolio-tags"><span>HackerRank</span><span>SQL</span></div>
+                            <span class="portfolio-card-link"><i class="bx bx-link-external"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-label">Contact</span>
+                    <h2 class="section-title">Get in <span>Touch</span></h2>
+                </div>
+                <div class="contact-wrapper">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-row">
+                            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="tel" id="contactNo" name="contactNo" placeholder="Phone">
+                            <input type="text" id="emailSubject" name="emailSubject" placeholder="Subject" required>
+                        </div>
+                        <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+                        <button type="submit" class="btn btn-primary btn-block">Send message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
-        <div class="footer-icon">
-            <a href="#home"><i class='bx bxs-arrow-to-top'></i></a>
+        <div class="container footer-inner">
+            <a href="#home" class="back-top" aria-label="Back to top">
+                <i class="bx bxs-arrow-to-top"></i>
+            </a>
+            <p class="footer-copy">© <span id="year"></span> Rohit Kumar. Built with care.</p>
         </div>
     </footer>
 
-    <!-- scroll reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!-- tyepd js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-    <!-- custom script -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
-
     <script src="js/script.js"></script>
-
-    <!-- Include the EmailJS library -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
-
 </body>
 </html>
-
-
-
-
-
